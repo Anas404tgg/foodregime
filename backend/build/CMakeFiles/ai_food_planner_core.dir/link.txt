@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libai_food_planner_core.a CMakeFiles/ai_food_planner_core.dir/src/nutrition.c.obj CMakeFiles/ai_food_planner_core.dir/src/ai_client.c.obj CMakeFiles/ai_food_planner_core.dir/src/json_parser.c.obj CMakeFiles/ai_food_planner_core.dir/src/db_sqlite.c.obj CMakeFiles/ai_food_planner_core.dir/src/db_supabase.c.obj
+C:\MinGW\bin\ranlib.exe libai_food_planner_core.a

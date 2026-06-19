@@ -1,0 +1,8 @@
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/ai_food_planner_core.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/ai_food_planner.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/test_nutrition.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/test_json_parser.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/test_db.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/test.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/edit_cache.dir
+C:/Users/OO/Downloads/TP1 Recursion et Pointeurs en C/project-groupeX-ai-food-planner/backend/build/CMakeFiles/rebuild_cache.dir
