@@ -1,0 +1,8 @@
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/ai_food_planner_core.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/ai_food_planner.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/test_nutrition.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/test_json_parser.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/test_db.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/test.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/edit_cache.dir
+/home/runner/work/foodregime/foodregime/backend/CMakeFiles/rebuild_cache.dir

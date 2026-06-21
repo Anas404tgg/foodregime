@@ -1,0 +1,2 @@
+/usr/bin/ar qc libai_food_planner_core.a CMakeFiles/ai_food_planner_core.dir/src/nutrition.c.o CMakeFiles/ai_food_planner_core.dir/src/ai_client.c.o CMakeFiles/ai_food_planner_core.dir/src/json_parser.c.o CMakeFiles/ai_food_planner_core.dir/src/db_sqlite.c.o CMakeFiles/ai_food_planner_core.dir/src/db_supabase.c.o
+/usr/bin/ranlib libai_food_planner_core.a

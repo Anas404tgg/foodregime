@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/test_db.dir/link.d CMakeFiles/test_db.dir/tests/test_db.c.o -o test_db  libai_food_planner_core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libcurl.so -lmicrohttpd -lcjson
