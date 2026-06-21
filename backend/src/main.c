@@ -1,5 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
 
+#include <ctype.h>
+#include <curl/curl.h>
 #include <microhttpd.h>
 #include <cjson/cJSON.h>
 #include <stdio.h>
@@ -97,10 +99,10 @@ static char *build_error_response(const char *message)
 }
 
 /* Envoie une réponse JSON au client. */
-static int queue_json(struct MHD_Connection *connection, unsigned int status_code, const char *json_text)
+static enum MHD_Result queue_json(struct MHD_Connection *connection, unsigned int status_code, const char *json_text)
 {
     struct MHD_Response *response = create_json_response(json_text);
-    int result;
+    enum MHD_Result result;
 
     if (response == NULL)
     {
@@ -113,10 +115,10 @@ static int queue_json(struct MHD_Connection *connection, unsigned int status_cod
 }
 
 /* Envoie une erreur JSON au client. */
-static int queue_error(struct MHD_Connection *connection, unsigned int status_code, const char *message)
+static enum MHD_Result queue_error(struct MHD_Connection *connection, unsigned int status_code, const char *message)
 {
     char *json_text = build_error_response(message);
-    int result;
+    enum MHD_Result result;
 
     if (json_text == NULL)
     {
@@ -435,7 +437,7 @@ static cJSON *build_shopping_list(const char *plan_json)
 }
 
 /* Lit un profil utilisateur depuis le corps JSON de la requête. */
-static int handle_profile_post(struct MHD_Connection *connection, const char *body)
+static enum MHD_Result handle_profile_post(struct MHD_Connection *connection, const char *body)
 {
     cJSON *root = cJSON_Parse(body);
     cJSON *name_item;
@@ -501,7 +503,7 @@ static int handle_profile_post(struct MHD_Connection *connection, const char *bo
 }
 
 /* Calcule un score nutritionnel à partir des macros passées en requête. */
-static int handle_score_get(struct MHD_Connection *connection)
+static enum MHD_Result handle_score_get(struct MHD_Connection *connection)
 {
     int user_id = query_int(connection, "user_id", 0);
     float proteins = query_float(connection, "proteins", 0.0f);
@@ -542,7 +544,7 @@ static int handle_score_get(struct MHD_Connection *connection)
 }
 
 /* Génère un plan via Mistral, le stocke puis le renvoie au frontend. */
-static int handle_plan_get(struct MHD_Connection *connection)
+static enum MHD_Result handle_plan_get(struct MHD_Connection *connection)
 {
     int user_id = query_int(connection, "user_id", 0);
     UserProfile *profile = db_get_profile(user_id);
@@ -681,7 +683,7 @@ static int handle_plan_get(struct MHD_Connection *connection)
 }
 
 /* Retourne l'historique des plans stockés dans SQLite. */
-static int handle_history_get(struct MHD_Connection *connection)
+static enum MHD_Result handle_history_get(struct MHD_Connection *connection)
 {
     int user_id = query_int(connection, "user_id", 0);
     char *history_json = db_get_history(user_id);
@@ -721,7 +723,7 @@ static int handle_history_get(struct MHD_Connection *connection)
 }
 
 /* Construit une liste de courses depuis le dernier plan disponible. */
-static int handle_shopping_list_get(struct MHD_Connection *connection)
+static enum MHD_Result handle_shopping_list_get(struct MHD_Connection *connection)
 {
     int user_id = query_int(connection, "user_id", 0);
     char *latest_plan_json = db_get_latest_plan_json(user_id);
@@ -761,13 +763,13 @@ static int handle_shopping_list_get(struct MHD_Connection *connection)
 }
 
 /* Répond aux requêtes OPTIONS pour le CORS. */
-static int handle_options(struct MHD_Connection *connection)
+static enum MHD_Result handle_options(struct MHD_Connection *connection)
 {
     return queue_json(connection, MHD_HTTP_NO_CONTENT, "");
 }
 
 /* Sélectionne la route HTTP adéquate. */
-static int route_request(struct MHD_Connection *connection, const char *method, const char *url, const char *body)
+static enum MHD_Result route_request(struct MHD_Connection *connection, const char *method, const char *url, const char *body)
 {
     if (strcmp(method, MHD_HTTP_METHOD_OPTIONS) == 0)
     {
@@ -825,10 +827,10 @@ static void append_upload_data(RequestContext *context, const char *upload_data,
 }
 
 /* Gère le cycle de vie des requêtes HTTP libmicrohttpd. */
-static int access_handler(void *cls, struct MHD_Connection *connection, const char *url, const char *method, const char *version, const char *upload_data, size_t *upload_data_size, void **con_cls)
+static enum MHD_Result access_handler(void *cls, struct MHD_Connection *connection, const char *url, const char *method, const char *version, const char *upload_data, size_t *upload_data_size, void **con_cls)
 {
     RequestContext *context = (RequestContext *)(*con_cls);
-    int result;
+    enum MHD_Result result;
 
     (void)cls;
     (void)version;
