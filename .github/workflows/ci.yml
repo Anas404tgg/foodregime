@@ -22,7 +22,7 @@ jobs:
 
       - name: Configure CMake
         working-directory: backend
-        run: cmake ..
+        run: cmake .
 
       - name: Build C backend
         working-directory: backend
