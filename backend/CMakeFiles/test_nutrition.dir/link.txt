@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/test_nutrition.dir/link.d CMakeFiles/test_nutrition.dir/tests/test_nutrition.c.o -o test_nutrition  libai_food_planner_core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libcurl.so -lmicrohttpd -lcjson

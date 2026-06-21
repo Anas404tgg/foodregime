@@ -1,0 +1,51 @@
+Start testing: Jun 21 22:49 UTC
+----------------------------------------------------------
+1/3 Testing: test_nutrition
+1/3 Test: test_nutrition
+Command: "/home/runner/work/foodregime/foodregime/backend/test_nutrition"
+Directory: /home/runner/work/foodregime/foodregime/backend
+"test_nutrition" start time: Jun 21 22:49 UTC
+Output:
+----------------------------------------------------------
+test_nutrition OK
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_nutrition" end time: Jun 21 22:49 UTC
+"test_nutrition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/3 Testing: test_json_parser
+2/3 Test: test_json_parser
+Command: "/home/runner/work/foodregime/foodregime/backend/test_json_parser"
+Directory: /home/runner/work/foodregime/foodregime/backend
+"test_json_parser" start time: Jun 21 22:49 UTC
+Output:
+----------------------------------------------------------
+test_json_parser OK
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_json_parser" end time: Jun 21 22:49 UTC
+"test_json_parser" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/3 Testing: test_db
+3/3 Test: test_db
+Command: "/home/runner/work/foodregime/foodregime/backend/test_db"
+Directory: /home/runner/work/foodregime/foodregime/backend
+"test_db" start time: Jun 21 22:49 UTC
+Output:
+----------------------------------------------------------
+test_db OK
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_db" end time: Jun 21 22:49 UTC
+"test_db" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 21 22:49 UTC
