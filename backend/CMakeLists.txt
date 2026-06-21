@@ -4,12 +4,18 @@ project(ai_food_planner C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-find_package(SQLite3 REQUIRED)
-find_package(CURL REQUIRED)
 find_package(PkgConfig REQUIRED)
+find_package(CURL REQUIRED)
+find_package(Threads REQUIRED)
+
+# SQLite3 with fallback to pkg-config
+find_package(SQLite3 QUIET)
+if(NOT SQLite3_FOUND)
+    pkg_check_modules(SQLite3 REQUIRED sqlite3)
+endif()
+
 pkg_check_modules(MICROHTTPD REQUIRED libmicrohttpd)
 pkg_check_modules(CJSON REQUIRED libcjson)
-find_package(Threads REQUIRED)
 
 enable_testing()
 
@@ -24,6 +30,7 @@ add_library(ai_food_planner_core STATIC
 target_include_directories(ai_food_planner_core
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${SQLite3_INCLUDE_DIRS}
         ${MICROHTTPD_INCLUDE_DIRS}
         ${CJSON_INCLUDE_DIRS}
 )
@@ -32,7 +39,7 @@ target_link_directories(ai_food_planner_core PUBLIC ${MICROHTTPD_LIBRARY_DIRS} $
 
 target_link_libraries(ai_food_planner_core
     PUBLIC
-        SQLite3::SQLite3
+        ${SQLite3_LIBRARIES}
         CURL::libcurl
         Threads::Threads
         ${MICROHTTPD_LIBRARIES}
